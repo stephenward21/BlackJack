@@ -1,16 +1,61 @@
-.the-table {
-	background-color: #277714;
-	border: 5px solid #dcdcdc;
-	border-radius: 10px;
-	margin-top: 50px;
-	padding: 30px 0px;
+body {
+	background-image: url("http://blog.luckynuggetcasino.com/wp-content/uploads/2016/05/Casino-2.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
+.the-table {
+	background-color: #277714;
+	border: 15px solid #402D27;
+	border-radius: 150px;
+	margin-top: 75px;
+	padding: 30px 0px;
+	transform: perspective(100em) rotateX(25deg);
+
+	
+    }
+
 .card {
-	height: 120px;
-	background-color: #fff;
+	height: 140px;
 	color: black;
 	margin: 10px;
 	width: 12.6%;
 	float: left;
+}
+
+.deck {
+	height: 140px;
+	padding: 7px;
+}
+
+.card img{
+	max-height: 100px;
+}
+
+.player-total, .dealer-total {
+	color: white;
+	font-size: 18px;
+	padding: 35px;
+	font-weight: bold;
+	margin-top: 10px;
+	
+}
+
+.dealer-total {
+	color: black;
+}
+
+.message {
+	padding: 25px;
+	font-size: 40px;
+	color: white;
+	text-align: center
+}
+
+.dealer-wins-total, .player-wins-total {
+	font-size: 20px;
+}
+
+.deal-button, .hit-button, .stand-button {
+	border: 3px solid #402D27;
 }
