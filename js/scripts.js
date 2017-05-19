@@ -34,14 +34,17 @@ $(document).ready(function(){
 
 		console.log(theDeck.length);
 		placeCard('player', 1, playersHand[0]);
-		placeCard('dealer', 1, dealersHand[0]);
+		$('#first').html('<img src="cards/deck.png">')
+		// placeCard('dealer', 1, dealersHand[0]);
 		placeCard('player', 2, playersHand[1]);
 		placeCard('dealer', 2, dealersHand[1]);
 
 
 
 		calculateTotal(playersHand, 'player');
-		calculateTotal(dealersHand, 'dealer');
+		$('.dealer-total').html("?????");
+
+		
 
 
 
@@ -67,15 +70,27 @@ $(document).ready(function(){
 		console.log("player clicked on stand")
 		var dealerTotal = calculateTotal(dealersHand, 'dealer');
 		// console.log(dealerTotal);
+		
 		while(dealerTotal < 17){
 			dealersHand.push(theDeck.shift());
 			placeCard('dealer', dealersHand.length, dealersHand[dealersHand.length - 1])
 			dealerTotal = calculateTotal(dealersHand, 'dealer');
 
 		}
+
+		placeCard('dealer', 1, dealersHand[0]);
 		checkWin();
+
+		$('.hit-button').click(function(){
+			$(this).attr("disabled", true);
+		});
 	});
 	
+	///////////////////////////////////////////////////
+	//////////////UTILITY FUNCTIONS////////////////////
+	///////////////////////////////////////////////////
+
+
 	
 	function reset(){
 		// 1. Reset the deck.
@@ -169,6 +184,7 @@ $(document).ready(function(){
 		var classSelector = '.' + who + '-cards .card-' + where;
 		// console.log(classSelector);
 		$(classSelector).html('<img src="cards/' + cardToPlace + '.png">');
+		
 		
 
 	}

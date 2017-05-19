@@ -52,10 +52,17 @@ body {
 	text-align: center
 }
 
+
+
 .dealer-wins-total, .player-wins-total {
 	font-size: 20px;
 }
 
 .deal-button, .hit-button, .stand-button {
 	border: 3px solid #402D27;
+}
+
+.ten-chip {
+	background: none;
+	outline: none;
 }
