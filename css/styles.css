@@ -54,7 +54,7 @@ body {
 
 
 
-.dealer-wins-total, .player-wins-total {
+.dealer-wins-total, .player-wins-total, .player-cash {
 	font-size: 20px;
 }
 
@@ -62,7 +62,12 @@ body {
 	border: 3px solid #402D27;
 }
 
-.ten-chip {
+.bet-button {
 	background: none;
 	outline: none;
+}
+
+.money-total {
+	float: right;
+	margin: 70px;
 }

@@ -8,6 +8,9 @@ $(document).ready(function(){
 	var dealersHand = [];
 	var dealerWinCounter = 0;
 	var playerWinCounter = 0;
+	var playerCash = 100;
+	var betCounter = 0
+
 
 	function createDeck(){
 		var newDeck = [];
@@ -46,8 +49,6 @@ $(document).ready(function(){
 
 		
 
-
-
 	});
 
 	$('.hit-button').click(function(){
@@ -64,6 +65,18 @@ $(document).ready(function(){
 		// placeCard('player', playersHand.length, playersHand[playersHand.length - 1])
 		// calculateTotal(playersHand, 'player');
 		 
+	});
+
+	$('.bet-button').click(function(){
+		console.log("player bet");
+		betCounter++
+		playerCash -= 10;
+		$('.player-cash').html("CASH: $" + playerCash)
+		
+
+		
+
+	
 	});
 
 	$('.stand-button').click(function(){
@@ -83,8 +96,15 @@ $(document).ready(function(){
 
 		$('.hit-button').click(function(){
 			$(this).attr("disabled", true);
-		});
+	
+
 	});
+
+
+
+
+
+});
 	
 	///////////////////////////////////////////////////
 	//////////////UTILITY FUNCTIONS////////////////////
@@ -116,12 +136,17 @@ $(document).ready(function(){
 		if(playerTotal > 21){
 			winner = "You have busted!";
 			dealerWinCounter++;
+
 		}else if(dealerTotal > 21){
 			winner = "Dealer has busted!";
 			playerWinCounter++;
+			playerCash = playerCash + (20 * betCounter)
+			console.log(playerCash)
 		}else if ((playerTotal == 21) && (playersHand.length == 2)){
 			winner = "Player BlackJack!";
 			playerWinCounter++;
+			playerCash = playerCash + (20 * betCounter)
+			console.log(playerCash)
 		}else if ((dealerTotal == 21) && (dealersHand.length  == 2)){
 			winner = "Dealer BlackJack";
 			dealerWinCounter++;
@@ -130,6 +155,8 @@ $(document).ready(function(){
 			if(playerTotal > dealerTotal){
 				winner = "You beat the dealer!";
 				playerWinCounter++;
+				playerCash = playerCash + (20 * betCounter)
+				console.log(playerCash)
 			}else if(playerTotal < dealerTotal){
 				winner = "The dealer got you!";
 				dealerWinCounter++;
@@ -141,10 +168,13 @@ $(document).ready(function(){
 		$('.message').html(winner);
 		$('.dealer-wins-total').html("Dealer wins: " + dealerWinCounter);
 		$('.player-wins-total').html("Player wins: " + playerWinCounter);
+		$('.player-cash').html("CASH: $" + playerCash)
+
 
 
 		
 	}
+	
 	
 
 	function calculateTotal(hand,who){
