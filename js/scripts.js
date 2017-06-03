@@ -1,5 +1,9 @@
 
+
+
 $(document).ready(function(){
+	$('.hit-button, .stand-button').prop('disabled', true);
+
 	// console.log(freshDeck);
 
 	const freshDeck = createDeck();
@@ -29,6 +33,7 @@ $(document).ready(function(){
 
 
 		reset();
+		
 		//update the player and dealer's hand now that the deck is shuffled.
 		playersHand.push(theDeck.shift());
 		dealersHand.push(theDeck.shift());
@@ -46,6 +51,11 @@ $(document).ready(function(){
 
 		calculateTotal(playersHand, 'player');
 		$('.dealer-total').html("?????");
+		$('.deal-button').prop('disabled',true);
+		$('.hit-button').prop('disabled',false);
+		$('.stand-button').prop('disabled',false);
+
+
 
 		
 
@@ -60,6 +70,7 @@ $(document).ready(function(){
 			placeCard('player',slotForNewCard,playersHand[lastCardIndex]); //3
 			calculateTotal(playersHand, 'player'); //4
 		}
+
 		// console.log("player clicked hit")
 		// playersHand.push(theDeck.shift());
 		// placeCard('player', playersHand.length, playersHand[playersHand.length - 1])
@@ -74,13 +85,11 @@ $(document).ready(function(){
 		$('.player-cash').html("CASH: $" + playerCash)
 		
 
-		
-
-	
 	});
 
 	$('.stand-button').click(function(){
 		console.log("player clicked on stand")
+		// $('.hit-button').prop("disabled", true);
 		var dealerTotal = calculateTotal(dealersHand, 'dealer');
 		// console.log(dealerTotal);
 		
@@ -92,11 +101,9 @@ $(document).ready(function(){
 		}
 
 		placeCard('dealer', 1, dealersHand[0]);
+		$('.deal-button').prop('disabled',false);
+		
 		checkWin();
-
-		$('.hit-button').click(function(){
-			$(this).attr("disabled", true);
-	
 
 	});
 
@@ -104,7 +111,7 @@ $(document).ready(function(){
 
 
 
-});
+// });
 	
 	///////////////////////////////////////////////////
 	//////////////UTILITY FUNCTIONS////////////////////
@@ -169,6 +176,7 @@ $(document).ready(function(){
 		$('.dealer-wins-total').html("Dealer wins: " + dealerWinCounter);
 		$('.player-wins-total').html("Player wins: " + playerWinCounter);
 		$('.player-cash').html("CASH: $" + playerCash)
+		$('.hit-button').prop('disabled',true);
 
 
 
